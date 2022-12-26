@@ -10,7 +10,7 @@ public:
 	TListNode(const TListNode<T>& _list);
 	TListNode(const TListNode<T>&& _list);
 
-	T GetData();
+	T& GetData();
 	TListNode<T>* GetNext();
 	TListNode<T>* GetPrev();
 
@@ -82,7 +82,7 @@ inline TListNode<T>::TListNode(const TListNode<T>&& _list)
 }
 
 template<class T>
-inline T TListNode<T>::GetData()
+inline T& TListNode<T>::GetData()
 {
 	return data;
 }

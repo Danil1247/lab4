@@ -8,13 +8,37 @@ class TList
 public:
 	TList();
 	TList(const TList<T>& _list);
-	~TList();
+	virtual ~TList();
 
 	void PushStart(T _data);
 	void PushEnd(T _data);
 
 	T GetStart();
 	T GetEnd();
+	T& Get(size_t i)
+	{
+		if (IsEmpty())
+			throw "error";
+
+		if ((i < 0) || (i > count))
+			throw "error";
+
+		TListNode<T>* j = start;
+
+		int k = 0;
+
+		while (j != nullptr)
+		{
+			if (k == 1)
+				break;
+
+			j = j->GetNext();
+			k++;
+		}
+
+		return j->GetData();
+	}
+
 
 	void DelStart();
 	void DelEnd();
@@ -138,6 +162,7 @@ inline T TList<T>::GetEnd()
 {
 	return end->GetData();
 }
+
 
 template<class T>
 inline void TList<T>::DelStart()
